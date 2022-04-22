@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Header from "./component/Header";
 import Search from "./component/Search";
+import ResultList from "./component/ResultList";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [ingredients, setIngredients] = useState<string[]>([]);
   const key = import.meta.env.VITE_SPOON_KEY;
   console.log(key);
 
@@ -12,7 +13,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Header/>
-        <Search/>
+        <Search setIngredients={setIngredients} />
+        <ResultList ingredients={ingredients} />
       </header>
     </div>
   )
