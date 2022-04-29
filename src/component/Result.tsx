@@ -9,7 +9,7 @@ const Result = (recipe: Recipe): React.ReactElement => {
     );
 
     return (
-        <div style={{flex: 1, minWidth: "300px"}}>
+        <div style={{justifyContent:"center", width:"100%"}}>
             <h2>{recipe.title}</h2>
             <img src={recipe.image}/>
             <p>{`Missing : ${getIngredientList(recipe.missedIngredients)}`}</p>
