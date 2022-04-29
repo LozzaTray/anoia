@@ -21,8 +21,8 @@ const Search = ({ setIngredients }: Props): React.ReactElement => {
     };
 
     return (
-        <Form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", padding: "10px" }}>
-            <InputGroup style={{maxWidth: "500px"}} className="mb-3">
+        <Form onSubmit={handleSubmit} className="center-children">
+            <InputGroup style={{width: "80vw", maxWidth: "500px"}} className="mb-3">
                 <InputGroup.Text id="ingred-id">Ingredients</InputGroup.Text>
                 <Form.Control
                     onChange={handleChange}

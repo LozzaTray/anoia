@@ -19,7 +19,7 @@ const Result = (recipe: Recipe): React.ReactElement => {
     }
 
     return (
-        <div onClick={openRecipe} style={{display:"flex", padding:"10px", margin:"10px",backgroundColor:"slategrey", maxWidth:"1200px"}}>
+        <div onClick={openRecipe} style={{display:"flex", padding:"10px",backgroundColor:"slategrey", maxWidth:"1200px"}}>
             <img className="vertical-center, Recipe-img" src={recipe.image}/>
             <div style={{width:"100%", height:"100%"}}>
                 <div style={{justifyContent:"center", width:"100%"}}>
