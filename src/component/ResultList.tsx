@@ -9,12 +9,13 @@ interface Props {
 
 const ResultList = ({ ingredients }: Props): React.ReactElement => {
     const apiKey = import.meta.env.VITE_SPOON_KEY;
+    const shouldStub = import.meta.env.VITE_STUB_DATA;
 
     const [recipes, setRecipes] = useState<Recipe[]>([]);
 
     useEffect(
         () => {
-            getRecipes(ingredients, apiKey).then(vals => setRecipes(vals));
+            getRecipes(ingredients, apiKey, shouldStub).then(vals => setRecipes(vals));
         },
         [ingredients]
     );
