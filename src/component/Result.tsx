@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Ingredient from "../model/Ingredient";
 import Recipe from "../model/Recipe";
+import {getRecipeInformation, getRecipes} from "../utils/api";
+import RecipeInformation from "../model/RecipeInformation";
 
 
 const Result = (recipe: Recipe): React.ReactElement => {
@@ -14,8 +16,12 @@ const Result = (recipe: Recipe): React.ReactElement => {
             <p className="Color-text, Orange-text">{`Unused : ${getIngredientList(recipe.unusedIngredients)}`}</p>
     }
 
-    function openRecipe() {
+    const apiKey = import.meta.env.VITE_SPOON_KEY;
+    const shouldStub = import.meta.env.VITE_STUB_DATA;
 
+    function openRecipe() {
+        getRecipeInformation(recipe.id, apiKey, shouldStub)
+            .then(val => window.open(val?.spoonacularSourceUrl));
     }
 
     return (
