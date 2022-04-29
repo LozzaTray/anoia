@@ -8,13 +8,19 @@ const Result = (recipe: Recipe): React.ReactElement => {
         ingredients.map(ing => ing.name).join(", ")
     );
 
+    let unusedIngredients
+    if (recipe.unusedIngredients.length > 0) {
+        unusedIngredients =
+            <p className="Color-text, Orange-text">{`Unused : ${getIngredientList(recipe.unusedIngredients)}`}</p>
+    }
+
     return (
         <div style={{justifyContent:"center", width:"100%"}}>
             <h2>{recipe.title}</h2>
             <img src={recipe.image}/>
-            <p>{`Missing : ${getIngredientList(recipe.missedIngredients)}`}</p>
-            <p>{`Used : ${getIngredientList(recipe.usedIngredients)}`}</p>
-            <p>{`Unused : ${getIngredientList(recipe.unusedIngredients)}`}</p>
+            <p className="Color-text, Red-text">{`Missing : ${getIngredientList(recipe.missedIngredients)}`}</p>
+            <p className="Color-text, Green-text">{`Used : ${getIngredientList(recipe.usedIngredients)}`}</p>
+            {unusedIngredients}
         </div>
     );
 }

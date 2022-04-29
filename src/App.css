@@ -40,3 +40,21 @@
 button {
   font-size: calc(10px + 2vmin);
 }
+
+.Color-text {
+  font-size: x-large;
+  font-family: "Helvetica Neue", serif;
+  color: aqua;
+}
+
+.Red-text {
+  color: red;
+}
+
+.Green-text {
+  color: green;
+}
+
+.Orange-text {
+  color: orange;
+}
