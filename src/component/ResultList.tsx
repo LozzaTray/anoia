@@ -27,9 +27,7 @@ const ResultList = ({ ingredients }: Props): React.ReactElement => {
                     <p>No recipes</p>
                     :
                     recipes.map((recipe, idx) => (
-                        <div style={{width: "80vw", padding: "10px", justifyContent:"center", alignItems:"center"}}>
-                            <Result key={`res-${idx}`} {...recipe} />
-                        </div>
+                        <Result key={`res-${idx}`} {...recipe} />
                     ))
             }
         </div>

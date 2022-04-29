@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Ingredient from "../model/Ingredient";
 import Recipe from "../model/Recipe";
 import {getRecipeInformation, getRecipes} from "../utils/api";
-import RecipeInformation from "../model/RecipeInformation";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 
 const Result = (recipe: Recipe): React.ReactElement => {
@@ -25,17 +26,16 @@ const Result = (recipe: Recipe): React.ReactElement => {
     }
 
     return (
-        <div onClick={openRecipe} style={{display:"flex", padding:"10px",backgroundColor:"slategrey", maxWidth:"1200px"}}>
-            <img className="vertical-center, Recipe-img" src={recipe.image}/>
-            <div style={{width:"100%", height:"100%"}}>
-                <div style={{justifyContent:"center", width:"100%"}}>
-                    <h2 className="Recipe-header">{recipe.title}</h2>
-                </div>
-                <p className="Color-text, Red-text">{`Missing : ${getIngredientList(recipe.missedIngredients)}`}</p>
-                <p className="Color-text, Green-text">{`Used : ${getIngredientList(recipe.usedIngredients)}`}</p>
+        <Card style={{ display: "flex", margin: "10px", width: "400px", maxWidth: "80vw" }}>
+            <Card.Header>{recipe.title}</Card.Header>
+            <Card.Img src={recipe.image} style={{ width: "100%", height: "20vw", objectFit: "contain" }} />
+            <Card.Body>
+                <Card.Text className="Color-text, Red-text">{`Missing : ${getIngredientList(recipe.missedIngredients)}`}</Card.Text>
+                <Card.Text className="Color-text, Green-text">{`Used : ${getIngredientList(recipe.usedIngredients)}`}</Card.Text>
                 {unusedIngredients}
-            </div>
-        </div>
+                <Button variant="primary" onClick={openRecipe}>Full Recipe</Button>
+            </Card.Body>
+        </Card>
     );
 }
 
