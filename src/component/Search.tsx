@@ -11,7 +11,6 @@ const Search = ({ setIngredients }: Props): React.ReactElement => {
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        alert("A name was submitted: " + value);
         event.preventDefault();
         const ingredients = value.split(",").map(ing => ing.trim());
         setIngredients(ingredients);

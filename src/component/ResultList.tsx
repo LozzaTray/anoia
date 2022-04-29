@@ -20,13 +20,13 @@ const ResultList = ({ ingredients }: Props): React.ReactElement => {
     );
 
     return (
-        <div style={{display: "flex"}}>
+        <div style={{display: "flex", flexWrap: "wrap"}}>
             {
                 recipes.length === 0 ?
                     <p>No recipes</p>
                     :
-                    recipes.map(recipe => (
-                        <Result {...recipe} />
+                    recipes.map((recipe, idx) => (
+                        <Result key={`res-${idx}`} {...recipe} />
                     ))
             }
         </div>

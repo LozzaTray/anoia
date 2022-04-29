@@ -1,15 +1,20 @@
 import React from "react";
+import Ingredient from "../model/Ingredient";
 import Recipe from "../model/Recipe";
 
 
 const Result = (recipe: Recipe): React.ReactElement => {
+    const getIngredientList = (ingredients: Ingredient[]) => (
+        ingredients.map(ing => ing.name).join(", ")
+    );
+
     return (
-        <div>
+        <div style={{flex: 1, minWidth: "300px"}}>
             <h2>{recipe.title}</h2>
-            <img ref={recipe.image}/>
-            <p>{`Missing : ${recipe.missedIngredients}`}</p>
-            <p>{`Used    : ${recipe.usedIngredients}`}</p>
-            <p>{`Unused  : ${recipe.unusedIngredients}`}</p>
+            <img src={recipe.image}/>
+            <p>{`Missing : ${getIngredientList(recipe.missedIngredients)}`}</p>
+            <p>{`Used : ${getIngredientList(recipe.usedIngredients)}`}</p>
+            <p>{`Unused : ${getIngredientList(recipe.unusedIngredients)}`}</p>
         </div>
     );
 }
