@@ -52,9 +52,29 @@ button {
 }
 
 .Green-text {
-  color: green;
+  color: lime;
 }
 
 .Orange-text {
   color: orange;
+}
+
+.Recipe-img {
+  object-fit: contain;
+  width:30%;
+  margin: 10px;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.Recipe-header {
+  font-size: xx-large;
+  font-family: "Helvetica Neue", serif;
+  color: aqua;
 }
