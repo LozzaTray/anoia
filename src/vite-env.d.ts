@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
     readonly VITE_SPOON_KEY: string
+    readonly VITE_STUB_DATA: string
     // more env variables...
 }
 

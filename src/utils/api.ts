@@ -5,7 +5,6 @@ import {data as mockData} from "./mock.json";
 
 export const getRecipes = async (userIngredients: string[], apiKey: string, shouldStub: boolean): Promise<Recipe[]> => {
     if (!shouldStub) {
-        console.log('fetching')
         const baseUrl = "https://api.spoonacular.com/recipes/findByIngredients";
         const queryUrl = `${baseUrl}?ingredients=${userIngredients.join(",")}&apiKey=${apiKey}`
         const res = await axios.get<Recipe[]>(queryUrl);

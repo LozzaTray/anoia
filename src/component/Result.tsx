@@ -18,7 +18,7 @@ const Result = (recipe: Recipe): React.ReactElement => {
     }
 
     const apiKey = import.meta.env.VITE_SPOON_KEY;
-    const shouldStub = import.meta.env.VITE_STUB_DATA;
+    const shouldStub = import.meta.env.VITE_STUB_DATA === 'true';
 
     function openRecipe() {
         getRecipeInformation(recipe.id, apiKey, shouldStub)
