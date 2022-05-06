@@ -21,7 +21,7 @@ const Search = ({ setIngredients }: Props): React.ReactElement => {
 
     return (
         <Form onSubmit={handleSubmit} className="center-children">
-            <InputGroup style={{width: "80vw", maxWidth: "500px", marginTop: "20px"}} className="mb-3">
+            <InputGroup style={{width: "80vw", maxWidth: "900px", marginTop: "20px"}} className="mb-3">
                 <InputGroup.Text id="ingred-id" style = {{fontFamily: "copperplate"}}>Ingredients</InputGroup.Text>
                 <Form.Control
                     onChange={handleChange}
