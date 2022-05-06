@@ -7,4 +7,5 @@ export default interface Recipe {
     missedIngredients: Ingredient[];
     usedIngredients: Ingredient[];
     unusedIngredients: Ingredient[];
+    likes: number;
 }

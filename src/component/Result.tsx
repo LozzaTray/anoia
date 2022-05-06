@@ -1,21 +1,21 @@
 import React from "react";
 import Ingredient from "../model/Ingredient";
 import Recipe from "../model/Recipe";
-import {getRecipeInformation} from "../utils/api";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+import { getRecipeInformation } from "../utils/api";
+import { ListGroup, ListGroupItem, Badge, Card, Button, Tab, Nav } from "react-bootstrap";
 
 
 const Result = (recipe: Recipe): React.ReactElement => {
-    const getIngredientList = (ingredients: Ingredient[]) => (
-        ingredients.map(ing => ing.name).join(", ")
+    const getIngredientList = (ingredients: Ingredient[], character: string, style: "danger" | "warning" | "success") => (
+        <ListGroup variant="flush">
+            {ingredients.sort((a, b) => a.name < b.name ? -1: 1).map(ing => (
+                <ListGroupItem className="d-flex justify-content-between align-items-start">
+                    {" " + ing.name}
+                    <Badge bg={style}>{character}</Badge>
+                </ListGroupItem>
+            ))}
+        </ListGroup>
     );
-
-    let unusedIngredients
-    if (recipe.unusedIngredients.length > 0) {
-        unusedIngredients =
-            <p className="Color-text, Orange-text">{`Unused : ${getIngredientList(recipe.unusedIngredients)}`}</p>
-    }
 
     const apiKey = import.meta.env.VITE_SPOON_KEY;
     const shouldStub = import.meta.env.VITE_STUB_DATA === 'true';
@@ -27,14 +27,55 @@ const Result = (recipe: Recipe): React.ReactElement => {
 
     return (
         <Card style={{ display: "flex", margin: "10px", width: "400px", maxWidth: "80vw" }}>
-            <Card.Header>{recipe.title}</Card.Header>
-            <Card.Img src={recipe.image} style={{ width: "100%", height: "200px", objectFit: "contain" }} />
+            <Card.Header>
+                <Card.Img src={recipe.image} style={{ width: "100%", height: "200px", objectFit: "contain" }} />
+            </Card.Header>
             <Card.Body>
-                <Card.Text className="Color-text, Red-text">{`Missing : ${getIngredientList(recipe.missedIngredients)}`}</Card.Text>
-                <Card.Text className="Color-text, Green-text">{`Used : ${getIngredientList(recipe.usedIngredients)}`}</Card.Text>
-                {unusedIngredients}
-                <Button variant="primary" onClick={openRecipe}>Full Recipe</Button>
+                <Card.Title>
+                    {recipe.title}
+                </Card.Title>
+                <Card.Text>
+                    A mischievous little dish from the south of Italy, famed for its bright colours and complex flavours.
+                </Card.Text>
+                <Tab.Container id="list-group-tabs-example" defaultActiveKey={`#${recipe.id}-missing`}>
+                    <Nav fill variant="tabs">
+                        <Nav.Item>
+                            <Nav.Link eventKey={`#${recipe.id}-missing`}>
+                                <Badge bg="danger">{recipe.missedIngredients.length}</Badge>
+                                {" Missing"}
+                            </Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link eventKey={`#${recipe.id}-used`}>
+                                <Badge bg="success">{recipe.usedIngredients.length}</Badge>
+                                {" Used"}
+                            </Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link eventKey={`#${recipe.id}-unused`}>
+                                <Badge bg="warning">{recipe.unusedIngredients.length}</Badge>
+                                {" Unused"}
+                            </Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                    <Tab.Content>
+                        <Tab.Pane eventKey={`#${recipe.id}-missing`}>
+                            {getIngredientList(recipe.missedIngredients, "⨯", "danger")}
+                        </Tab.Pane>
+                        <Tab.Pane eventKey={`#${recipe.id}-used`}>
+                            {getIngredientList(recipe.usedIngredients, "✓", "success")}
+                        </Tab.Pane>
+                        <Tab.Pane eventKey={`#${recipe.id}-unused`}>
+                            {getIngredientList(recipe.unusedIngredients, "-", "warning")}
+                        </Tab.Pane>
+                    </Tab.Content>
+                </Tab.Container>
             </Card.Body>
+
+
+            <Card.Footer style={{ background: "transparent" }}>
+                <Button style={{ width: "100%" }} variant="outline-primary" onClick={openRecipe}>Full Recipe</Button>
+            </Card.Footer>
         </Card>
     );
 }
