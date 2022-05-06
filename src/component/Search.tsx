@@ -29,6 +29,7 @@ const Search = ({ setIngredients }: Props): React.ReactElement => {
                     placeholder="e.g. Chicken, Onion"
                     aria-label="Ingredients"
                     aria-describedby="ingred-id"
+                    id="searchForm"
                 />
                 <Button variant="primary" type="submit" style = {{fontFamily: "copperplate"}}>
                     Search
