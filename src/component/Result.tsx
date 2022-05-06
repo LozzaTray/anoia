@@ -28,7 +28,7 @@ const Result = (recipe: Recipe): React.ReactElement => {
     return (
         <Card style={{ display: "flex", margin: "10px", width: "400px", maxWidth: "80vw" }}>
             <Card.Header>{recipe.title}</Card.Header>
-            <Card.Img src={recipe.image} style={{ width: "100%", height: "20vw", objectFit: "contain" }} />
+            <Card.Img src={recipe.image} style={{ width: "100%", height: "200px", objectFit: "contain" }} />
             <Card.Body>
                 <Card.Text className="Color-text, Red-text">{`Missing : ${getIngredientList(recipe.missedIngredients)}`}</Card.Text>
                 <Card.Text className="Color-text, Green-text">{`Used : ${getIngredientList(recipe.usedIngredients)}`}</Card.Text>

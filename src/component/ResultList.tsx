@@ -22,6 +22,7 @@ const ResultList = ({ ingredients }: Props): React.ReactElement => {
 
     return (
         <div className="center-children">
+            <div className="center-children" style={{maxWidth: "900px", width: "100%"}}>
             {
                 recipes.length === 0 ?
                     <p>No recipes</p>
@@ -30,6 +31,7 @@ const ResultList = ({ ingredients }: Props): React.ReactElement => {
                         <Result key={`res-${idx}`} {...recipe} />
                     ))
             }
+            </div>
         </div>
     )
 }
