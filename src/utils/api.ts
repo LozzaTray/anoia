@@ -11,7 +11,6 @@ export const getRecipes = async (userIngredients: string[], apiKey: string, shou
         console.log(res.data)
         return res.data
     }
-    console.log('stubbing');
     return mockData;
 }
 
