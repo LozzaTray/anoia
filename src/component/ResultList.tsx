@@ -15,7 +15,7 @@ const ResultList = ({ ingredients }: Props): React.ReactElement => {
 
     useEffect(
         () => {
-            getRecipes(ingredients, apiKey, shouldStub).then(vals => setRecipes(vals));
+            getRecipes(ingredients, apiKey, shouldStub === 'true').then(vals => setRecipes(vals));
         },
         [ingredients]
     );

@@ -1,7 +1,7 @@
 import React from "react";
 import Ingredient from "../model/Ingredient";
 import Recipe from "../model/Recipe";
-import {getRecipeInformation, getRecipes} from "../utils/api";
+import {getRecipeInformation} from "../utils/api";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 

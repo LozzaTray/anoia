@@ -3,12 +3,16 @@ import RecipeInformation from "../model/RecipeInformation"
 import axios from "axios";
 
 export const getRecipes = async (userIngredients: string[], apiKey: string, shouldStub: boolean): Promise<Recipe[]> => {
+    console.log(shouldStub)
     if (!shouldStub) {
+        console.log('fetching')
         const baseUrl = "https://api.spoonacular.com/recipes/findByIngredients";
         const queryUrl = `${baseUrl}?ingredients=${userIngredients.join(",")}&apiKey=${apiKey}`
         const res = await axios.get<Recipe[]>(queryUrl);
+        console.log(res.data)
         return res.data
     }
+    console.log('stubbing')
     return [
         {
             "id": 73420,
